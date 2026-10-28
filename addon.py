@@ -1,10 +1,10 @@
 import sys
 import urllib.parse
-from typing import List, Optional
+from typing import Optional
 
 import xbmc
 
-ADDON_ID = "script.hdmi.cec.power"
+ADDON_ID = "script.module.hdmi-cec-power-controls"
 LOG_MARKER = "HDMI-CEC-POWER"
 
 
@@ -24,7 +24,7 @@ def _normalize_action(value: str) -> str:
     return value.strip().lower().replace("_", "-")
 
 
-def parse_action(argv: List[str]) -> Optional[str]:
+def parse_action(argv: list[str]) -> Optional[str]:
     """
     Parses the action from sys.argv[1:]. Supports:
       - positional:   ["on"]
@@ -43,7 +43,7 @@ def parse_action(argv: List[str]) -> Optional[str]:
 
         if "=" in text:
             parsed = urllib.parse.parse_qs(text, keep_blank_values=False)
-            if "action" in parsed and parsed["action"]:
+            if parsed.get("action"):
                 return _normalize_action(parsed["action"][0])
             continue
 

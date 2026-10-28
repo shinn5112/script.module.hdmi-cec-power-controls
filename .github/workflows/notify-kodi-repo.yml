@@ -1,0 +1,25 @@
+name: Notify Kodi repository
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    # Pre-releases are not published to the Kodi repository
+    if: github.event_name != 'release' || !github.event.release.prerelease
+    steps:
+      - name: Trigger Kodi repository build
+        env:
+          # PAT with contents:write on the Kodi repository (GITHUB_TOKEN cannot
+          # trigger workflows in other repositories)
+          GH_TOKEN: ${{ secrets.KODI_REPO_TOKEN }}
+          KODI_REPO: ${{ vars.KODI_REPO || 'shinn5112/shinn5112-kodi-repo' }}
+          TAG: ${{ github.event.release.tag_name || 'manual' }}
+        run: |
+          gh api "repos/${KODI_REPO}/dispatches" \
+            -f event_type=addon-release \
+            -f "client_payload[repository]=${GITHUB_REPOSITORY}" \
+            -f "client_payload[tag]=${TAG}"

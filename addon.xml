@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.hdmi.cec.power"
+<addon id="script.module.hdmi-cec-power-controls"
        name="HDMI CEC Power Controls"
-  version="0.1.6"
+       version="0.2.0"
        provider-name="shinn5112">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
   </requires>
 
-  <extension point="xbmc.python.script" library="default.py">
+  <extension point="xbmc.python.script" library="addon.py">
     <provides>executable</provides>
   </extension>
 
@@ -18,7 +18,11 @@
       Addons.ExecuteAddon over Kodi's JSON-RPC API. Pass action=on to send
       CECActivateSource or action=off to send CECStandby.
     </description>
-    <news>v0.1.6
+    <news>v0.2.0
+  - Renamed add-on id to script.module.hdmi-cec-power-controls to follow Kodi naming conventions
+  - Restructured repository so the add-on lives at the repository root
+
+  v0.1.6
   - Reverted OFF action to Kodi-native CECStandby for adapter compatibility
   - Removed runtime dependency on external cec-client command execution
 
@@ -45,7 +49,7 @@
   - Supports on/off CEC power commands via Addons.ExecuteAddon JSON-RPC
     </news>
     <platform>all</platform>
-    <license>MIT</license>
+    <license>GPL-3.0-only</license>
     <source>https://github.com/shinn5112/kodi-hdmi-cec-power-controls</source>
     <assets>
       <icon>resources/icon.png</icon>
