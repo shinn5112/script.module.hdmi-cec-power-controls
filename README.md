@@ -24,7 +24,7 @@ Requires Kodi 20 (Nexus) or newer.
 ## Release a new version
 
 1. Update `version` and the `<news>` entry in `addon.xml`. Kodi only offers an update when the version increases.
-2. Merge to `master`.
+2. Merge to `main`.
 3. Publish a GitHub release (tag it with the add-on version, for example `0.2.0`). The **Notify Kodi repository** workflow runs on published releases only, not on pushes or pre-releases, and triggers the **Build Kodi repository** workflow in `shinn5112-kodi-repo`, which publishes the new zip. It can also be started manually from the Actions tab.
 4. Kodi picks up the new version the next time it checks for add-on updates.
 
