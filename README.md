@@ -20,19 +20,6 @@ Installation and updates are managed through the [shinn5112 Kodi repository](htt
 
 Requires Kodi 20 (Nexus) or newer.
 
-### Adopt this add-on into the repository
-
-1. In `shinn5112-kodi-repo`, open **Settings -> Secrets and variables -> Actions -> Variables**.
-2. Add this line to the `ADDON_SOURCES` variable (whitespace or newline separated, alongside any existing entries):
-
-   ```
-   https://github.com/shinn5112/kodi-hdmi-cec-power-controls.git#main
-   ```
-
-   If `ADDON_SOURCES` is unset, it defaults to only the Crunchyroll plugin, so include that entry as well when you first set the variable.
-3. Add a `KODI_REPO_TOKEN` secret to this repository (see below), then run the **Build Kodi repository** workflow from the Actions tab. It publishes `script.module.hdmi-cec-power-controls/` with the zip, `addons.xml` and its checksum to `main`.
-
-The notify workflow needs a `KODI_REPO_TOKEN` secret in this repository: a personal access token with contents write access to `shinn5112-kodi-repo`. To target a different Kodi repository, set a `KODI_REPO` Actions variable (`owner/name`).
 
 ## Release a new version
 
